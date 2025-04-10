@@ -1,8 +1,20 @@
 <template>
-  <nav class="flex">
-    <router-link to="/">Home</router-link>
-    <router-link to="/study">Study</router-link>
-    <router-link to="/about">About</router-link>
+  <nav class="fixed top-0 w-full bg-black" :class="{'bg-opacity-30 bg-black shadow-lg': isScroll}">
+   <Container>
+     <div class="text-white">Venus</div>
+     <Menu></Menu>
+   </Container>
   </nav>
   <router-view></router-view>
+  <div class="h-[4000px]"></div>
 </template>
+
+<script setup lang="ts">
+import Container from '@/components/Container.vue'
+import Menu from '@/components/Menu.vue'
+
+const {y} = useWindowScroll()
+const isScroll = computed(() => {
+  return y.value > 0
+})
+</script>

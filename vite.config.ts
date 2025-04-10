@@ -32,7 +32,7 @@ export default defineConfig({
         /\.vue\.[tj]sx?\?vue/, // .vue (vue-loader with experimentalInlineMatchResource enabled)
         /\.md$/, // .md
       ],
-      imports: ['vue', VueRouterAutoImports, '@vueuse/core'],
+      imports: ['vue',  VueRouterAutoImports, '@vueuse/core'],
       dts: 'src/auto-imports.d.ts',
     }),
     Components({
