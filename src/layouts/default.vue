@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-0 w-full bg-black" :class="{'bg-opacity-30 bg-black shadow-lg': isScroll}">
+  <nav class="fixed top-0 w-full bg-black z-50" :class="{'bg-opacity-30 bg-black shadow-lg': isScroll}">
    <Container>
      <div class="text-white">Venus</div>
      <Menu></Menu>
