@@ -1,10 +1,12 @@
 <template>
  <Swiper :items="slideItems"></Swiper>
+ <Card v-bind="card"></Card>
 </template>
 
 <script setup lang="ts">
 import { useRegisterSW } from 'virtual:pwa-register/vue'
-import {SwiperItemType} from '@/components/types';
+import type {Card, SwiperItemType} from '@/components/types';
+import bg from '@/assets/images/bg.png';
 onMounted(() => {
   useRegisterSW({
     immediate: true,
@@ -22,13 +24,25 @@ onMounted(() => {
 
 const slideItems: Ref<SwiperItemType[]> = ref([
   {
-  image: 'https://cdn.pixabay.com/photo/2015/09/18/19/03/space-5579.jpg',
+  image: bg,
   title: 'Venus',
   subTitle: '1'
 },{
-  image: 'https://cdn.pixabay.com/photo/2015/09/18/19/03/space-5579.jpg',
+  image: bg,
   title: 'Hh',
   subTitle: '2'
 }
 ]);
+
+const card: Ref<Card> = ref(
+  {
+    image: bg,
+    imageType: 'rounded',
+    // icon: 'i-mdi-home w-8 h-8',
+    title: 'card',
+    subTitle: 'card1',
+    url: '',
+    border: true,
+  }
+);
 </script>
