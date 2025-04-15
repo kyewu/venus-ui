@@ -1,5 +1,5 @@
 <template>
- <Swiper :items="slideItems"></Swiper>
+ <Swiper :items="slideItems" :height="(store.rate*36) + 'rem'"></Swiper>
  <Card v-bind="card"></Card>
 </template>
 
@@ -7,6 +7,8 @@
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import type {Card, SwiperItemType} from '@/components/types';
 import bg from '@/assets/images/bg.png';
+import { useThemeStore } from '@/stores';
+const store = useThemeStore()
 onMounted(() => {
   useRegisterSW({
     immediate: true,

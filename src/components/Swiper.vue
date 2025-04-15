@@ -1,5 +1,5 @@
 <template>
-  <swiper-container class="h-80 relative" :pagination="{ type: 'fraction', el: '.swiper-pagination' }" :space-between="0"
+  <swiper-container class="relative" :style="{ 'height': height }" :pagination="{ type: 'fraction', el: '.swiper-pagination' }" :space-between="0"
     :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :autoplay="{ delay: 3000, disableOnInteraction: false }"
     @swiperactiveindexchange="onActiveIndexChange">
     <swiper-slide v-for="(item, index) in items" :key="index">
@@ -7,9 +7,9 @@
         <div class="bg-image"
           :style="{ 'background-image': `url(${item?.image})` }">
           <Container class="h-full">
-            <div class="flex flex-col justify-center items-start">
-              <p class="text-4xl font-bold text-white">{{ item?.title }}</p>
-              <p class="text-xl text-gray-100 pt-4">{{ item?.subTitle }}</p>
+            <div class="flex flex-col justify-center items-start lt-sm:px-4">
+              <p class="text-xl sm:text-4xl font-bold text-white">{{ item?.title }}</p>
+              <p class="text-sm sm:text-xl text-gray-100 pt-4">{{ item?.subTitle }}</p>
             </div>
           </Container>
         </div>
@@ -30,15 +30,18 @@ import type { SwiperItemType } from './types';
 // 注册Swiper自定义元素
 register();
 
-defineProps<{ items: SwiperItemType[] }>()
+defineProps<{ items: SwiperItemType[],height: string }>()
 
 const slideRight = ref<number>(0)
+const curActiveIndex = ref<number>(0)
 
 const onActiveIndexChange = (e: CustomEvent) => {
   const [swiper] = e.detail
-  const { translate } = swiper
+  const { translate, activeIndex } = swiper
+  curActiveIndex.value = activeIndex
   slideRight.value = translate
 };
+
 
 </script>
 
