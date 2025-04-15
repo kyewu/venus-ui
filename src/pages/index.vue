@@ -48,3 +48,7 @@ const card: Ref<Card> = ref(
   }
 );
 </script>
+
+<style lang="scss" scoped>
+
+</style>
