@@ -13,7 +13,7 @@
 
 <style scoped lang="scss">
 .item {
-  @apply relative text-white text-xl px-8 py-2 cursor-pointer font-300;
+  @apply relative text-white text-xl px-8 py-2 cursor-pointer font-300 lt-sm:self-start;
   &:hover {
     @apply font-500;
     &:after {
