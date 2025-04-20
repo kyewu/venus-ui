@@ -13,9 +13,11 @@
     </Container>
   </nav>
   <router-view></router-view>
-  <div class="h-[4000px]"></div>
+  <div class="h-[1000px]"></div>
   <footer>
-    <div class="mobile-hide">default footer</div>
+    <div class="mobile-hide">
+      <DefaultFooter></DefaultFooter>
+    </div>
     <div class="hidden mobile">mobile footer</div>
   </footer>
 </template>
