@@ -1,6 +1,13 @@
-import { defineConfig, presetIcons } from 'unocss'
+import { defineConfig, presetIcons, transformerDirectives, transformerVariantGroup } from 'unocss'
 import presetWind4 from '@unocss/preset-wind4'
 export default defineConfig({
+  shortcuts: {
+    'bg-image': 'w-full h-full bg-cover bg-no-repeat bg-center-top',
+  },
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup(),
+  ],
   presets: [
     presetWind4(),
     presetIcons({
