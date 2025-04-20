@@ -1,10 +1,14 @@
 <template>
   <nav
-    :class="['fixed w-full bg-black z-50 top-0 relative h-12 line-height-12', { 'bg-opacity-30 bg-black shadow-lg': isScroll }]">
+    :class="['fixed w-full bg-black z-50 top-0 relative h-12 line-height-12 transition-all duration-300', { 'bg-opacity-30 bg-black shadow-lg': isScroll }, { 'lt-sm:(bg-black h-full)': show }]">
     <Container>
       <div class="text-white h-full lt-sm:(mx-auto)">Venus</div>
-      <i class="i-mdi-menu hidden text-gray-300 text-2xl absolute right-5 top-3 cursor-pointer hover:text-white lt-sm:block"
-        @click="() => toggle()"></i>
+      <div class="hidden text-gray-300 text-2xl absolute right-5 top-3 cursor-pointer hover:text-white lt-sm:block">
+        <Transition name="rotate-icon" mode="out-in">
+          <i v-if="!show" class="i-mdi-menu" @click="() => toggle()"></i>
+          <i v-else class="i-mdi-close" @click="() => toggle()"></i>
+        </Transition>
+      </div>
       <Menu v-show="show" class="lt-sm:(absolute top-14 right-0 w-full flex-col)"></Menu>
     </Container>
   </nav>
@@ -33,10 +37,31 @@ useResizeObserver(document.body, () => {
     if (flag.value) {
       return
     }
-    flag.value = true
+    flag.value = false
     toggle(false)
   } else {
     toggle(true)
   }
 })
 </script>
+
+<style lang="scss" scoped>
+  .rotate-icon-enter-active {
+    animation: scaleYIn 0.3s ease-in-out;
+  }
+
+  .rotate-icon-leave-active {
+    animation: scaleYIn 0.3s reverse;
+  }
+
+  @keyframes scaleYIn {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+</style>
