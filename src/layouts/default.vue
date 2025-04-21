@@ -13,13 +13,10 @@
     </Container>
   </nav>
   <router-view></router-view>
-  <div class="h-[1000px]"></div>
-  <footer>
-    <div class="mobile-hide">
-      <DefaultFooter></DefaultFooter>
-    </div>
-    <div class="hidden mobile">mobile footer</div>
-  </footer>
+  <div class="mobile-hide">
+    <DefaultFooter></DefaultFooter>
+  </div>
+  <div class="hidden mobile">mobile footer</div>
 </template>
 
 <script setup lang="ts">
@@ -48,22 +45,23 @@ useResizeObserver(document.body, () => {
 </script>
 
 <style lang="scss" scoped>
-  .rotate-icon-enter-active {
-    animation: scaleYIn 0.3s ease-in-out;
+.rotate-icon-enter-active {
+  animation: scaleYIn 0.3s ease-in-out;
+}
+
+.rotate-icon-leave-active {
+  animation: scaleYIn 0.3s reverse;
+}
+
+@keyframes scaleYIn {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
   }
 
-  .rotate-icon-leave-active {
-    animation: scaleYIn 0.3s reverse;
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
   }
-
-  @keyframes scaleYIn {
-    0% {
-      opacity: 0;
-      transform: scaleY(0);
-    }
-    100% {
-      opacity: 1;
-      transform: scaleY(1);
-    }
-  }
+}
 </style>

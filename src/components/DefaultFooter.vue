@@ -10,7 +10,7 @@
             <!-- image -->
             <img
               class="hidden w-20 h-20 absolute top-0 left-[-1/2] translate-x-[-50%] translate-y-[-100%] group-hover:block max-w-unset"
-              src="@/assets/images/wechat-code.jpg" alt="WeChat QR Code">
+              :src="contacts.wechat || '@/assets/images/wechat.jpg'" alt="WeChat QR Code">
           </div>
           <div class="ml-4 i-bi:sina-weibo cursor-pointer"></div>
         </aside>
@@ -18,49 +18,69 @@
       <div class="my-4 border-b-1 border-coolgray-600 w-full"></div>
       <!-- 介绍，联系信息，媒体信息，外链 -->
       <ul class="w-full flex flex-row justify-start mb-4 pl-4">
-        <li class="mr-10">
+        <li v-if="contacts" class="mr-10">
           <div class="text-gray-200 font-500 text-lg pb-4 flex items-center">
             <i class="i-lineicons:phone mr-2"></i>
             <span>联系信息</span>
           </div>
           <div class="text-gray-200 font-300 mb-2">
             <span>邮箱:</span>
-            <span>admin@qq.com</span>
+            <span>{{ contacts.email }}</span>
           </div>
-          <div class="text-gray-200 font-300 mb-2">
+          <div v-if="contacts.phone" class="text-gray-200 font-300 mb-2">
             <span>电话:</span>
-            <span>+86 123456789</span>
+            <span>{{ contacts.phone }}</span>
           </div>
-          <div class="text-gray-200 font-300 mb-2">
+          <div v-if="contacts.address" class="text-gray-200 font-300 mb-2">
             <span>地址:</span>
-            <span>浙江省杭州市西湖区</span>
+            <span>{{ contacts.address }}</span>
           </div>
         </li>
-        <li>
+        <li v-if="links.length">
           <div class="text-gray-200 font-500 text-lg pb-4 flex items-center">
             <i class="i-solar:link-bold mr-2"></i>
             <span>友链信息</span>
           </div>
-          <div class="text-gray-200 font-300 mb-2">
-            <span>Blog</span>
-          </div>
-          <div class="text-gray-200 font-300 mb-2">
-            <span>Github</span>
+          <div v-for="item in links" :key="item.name"
+            class="text-gray-200 font-300 mb-2 decoration-underline hover:font-500">
+            <a :href="item.url" target="_blank">{{ item.name }}</a>
           </div>
         </li>
       </ul>
-      <!-- record -->
+      <!-- icp -->
       <div class="flex items-center justify-center w-full">
-        Copyright @ Kevin 2025-2026
+        {{ copyRight }}
         <div class="record"></div>
-        <a href="https://github.com/venus-ui">沪公网安备4564564646号</a>
+        <a href="https://github.com/venus-ui">{{ icp }}</a>
       </div>
     </Container>
   </footer>
 </template>
 
 <script setup lang="ts">
+import type { FooterType } from './types';
+import weChatCode from '@/assets/images/wechat.jpg';
 
+withDefaults(defineProps<FooterType>(), {
+  icp: '沪ICP备123456789号',
+  copyRight: 'Copyright @ Kevin 2025-2026',
+  links: () => [
+    {
+      name: 'Blog',
+      url: 'https://github.com/venus-ui',
+    },
+    {
+      name: 'Github',
+      url: 'https://github.com/venus-ui',
+    },
+  ],
+  contacts: () => ({
+    email: 'admin@qq.com',
+    phone: '+86 123456789',
+    address: '浙江省杭州市西湖区',
+    wechat: weChatCode,
+  })
+})
 </script>
 
 <style scoped lang="scss">
