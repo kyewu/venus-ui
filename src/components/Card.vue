@@ -1,6 +1,6 @@
 <template>
   <div :class="cardClass">
-    <header v-if="image" :class="imageClass" :style="{ 'background-image': `url(${image})` }"></header>
+    <header v-if="image" :class="imageClass" class="bg-image" :style="{ 'background-image': `url(${image})` }"></header>
     <header v-else :class="icon"></header>
     <div :class="titleClass" v-if="title || subTitle">
       <p v-if="title" class="text-lg text-dark-300 text-bold pb-2">{{ title }}</p>
