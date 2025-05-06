@@ -11,6 +11,7 @@ declare module 'vue' {
     Card: typeof import('./components/Card.vue')['default']
     Container: typeof import('./components/Container.vue')['default']
     DefaultFooter: typeof import('./components/DefaultFooter.vue')['default']
+    FreeSwiper: typeof import('./components/FreeSwiper.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Menu: typeof import('./components/Menu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

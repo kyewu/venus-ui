@@ -86,6 +86,9 @@
   <Container>
     <div class="text-2xl font-bold mt-8 p-4">合作伙伴</div>
   </Container>
+  <Container>
+    <FreeSwiper :items="partners"></FreeSwiper>
+  </Container>
 </template>
 
 <script setup lang="ts">
@@ -262,14 +265,14 @@ const officialCourse: Ref<Card[]> = ref([
   },
 ])
 
-// const partners = ref([
-//   'https://wayearn.static.toimc.com/partner/logo1.png',
-//   'https://wayearn.static.toimc.com/partner/logo2.png',
-//   'https://wayearn.static.toimc.com/partner/logo8.png',
-//   'https://wayearn.static.toimc.com/partner/logo5.png',
-//   'https://wayearn.static.toimc.com/partner/logo6.png',
-//   'https://wayearn.static.toimc.com/partner/logo7.png'
-// ])
+const partners = ref([
+  'https://wayearn.static.toimc.com/partner/logo1.png',
+  'https://wayearn.static.toimc.com/partner/logo2.png',
+  'https://wayearn.static.toimc.com/partner/logo8.png',
+  'https://wayearn.static.toimc.com/partner/logo5.png',
+  'https://wayearn.static.toimc.com/partner/logo6.png',
+  'https://wayearn.static.toimc.com/partner/logo7.png'
+])
 </script>
 
 <style lang="scss" scoped>
@@ -283,5 +286,4 @@ const officialCourse: Ref<Card[]> = ref([
     }
   }
 }
-
 </style>

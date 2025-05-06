@@ -52,18 +52,17 @@
 // register();
 import type { SwiperItemType } from './types'
 
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+// import 'swiper/css/navigation'
+// import 'swiper/css/pagination'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as ISwiper } from 'swiper/types'
 
-const modules = [
+const modules = ref([
   Navigation,
   Pagination,
   Autoplay,
-]
+])
 
 defineProps<{ items: SwiperItemType[], height: string }>()
 const emits = defineEmits<{ change: [value: number] }>()
