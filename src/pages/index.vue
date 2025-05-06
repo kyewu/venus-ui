@@ -47,7 +47,7 @@
   </Container>
   <!-- card -->
   <Container class="p-4">
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-full lt-sm:px-4">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 w-full lt-sm:px-4">
       <a class="['group','hover:( shadow-2xl transform-all transform-translate-y--5)']" :href="card.url" target="_blank"
         v-for="(card, index) in officialCourse" :key="index">
         <Card v-bind="card" class="w-full rounded-3 transition-all hover:(transform-translate-y--1 shadow-lg)">
