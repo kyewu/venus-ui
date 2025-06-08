@@ -9,13 +9,20 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Card: typeof import('./components/Card.vue')['default']
+    Chapters: typeof import('./components/Chapters.vue')['default']
+    Comments: typeof import('./components/Comments.vue')['default']
     Container: typeof import('./components/Container.vue')['default']
     DefaultFooter: typeof import('./components/DefaultFooter.vue')['default']
     FreeSwiper: typeof import('./components/FreeSwiper.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    ImageSwiper: typeof import('./components/ImageSwiper.vue')['default']
+    MemberBenefits: typeof import('./components/MemberBenefits.vue')['default']
     Menu: typeof import('./components/Menu.vue')['default']
+    Modal: typeof import('./components/Modal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Swiper: typeof import('./components/Swiper.vue')['default']
+    Tabs: typeof import('./components/Tabs.vue')['default']
+    Toast: typeof import('./components/Toast.vue')['default']
   }
 }

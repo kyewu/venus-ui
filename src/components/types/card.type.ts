@@ -12,7 +12,7 @@ export interface Card {
   icon?: string
   title?: string
   subTitle?: string
-  url: string
+  url?: string
   border?: boolean
 }
 

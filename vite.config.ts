@@ -12,6 +12,8 @@ import Components from 'unplugin-vue-components/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import Layouts from 'vite-plugin-vue-layouts-next'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
+import Markdown from 'unplugin-vue-markdown/vite'
+import prism from 'markdown-it-prism'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -19,10 +21,23 @@ export default defineConfig({
     VueRouter({
       dts: 'src/typed-router.d.ts',
       routesFolder: 'src/pages',
-      extensions: ['.vue'],
+      extensions: ['.vue', '.md'],
       exclude: ['**/components/*.vue'],
     }),
-    vue(),
+    vue({
+      include: [/\.vue$/, /\.md$/]
+    }),
+    Markdown({
+      markdownItOptions: {
+        html: true,
+        linkify: true,
+        typographer: true,
+        breaks: true,
+        // Add any additional markdown-it options here
+      },
+      headEnabled: true,
+      markdownItUses: [prism]
+    }),
     vueJsx(),
     UnoCSS(),
     AutoImport({
@@ -38,6 +53,8 @@ export default defineConfig({
     }),
     Components({
       dts: 'src/components.d.ts',
+      extensions: ['vue', 'md'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/]
     }),
     Layouts({
       layoutsDirs: 'src/layouts',
