@@ -14,7 +14,7 @@ import Layouts from 'vite-plugin-vue-layouts-next'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import Markdown from 'unplugin-vue-markdown/vite'
 import prism from 'markdown-it-prism'
-import {viteMockServe} from 'vite-plugin-mock'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -94,7 +94,22 @@ export default defineConfig(({ mode }) => ({
           unitToConvert: 'px',
           viewportWidth: 750, // 设计稿宽度
           unitPrecision: 5, // 单位转换后保留的精度
-          propList: ['*', '!font-size'], // 能转化为vw的属性列表
+          propList: [
+            '*',
+            '!border-radius',
+            '!box-shadow',
+            '!font-size',
+            '!letter-spacing',
+            '!line-height',
+            '!margin',
+            '!padding',
+            '!text-indent',
+            '!text-shadow',
+            '!width',
+            '!height',
+            "!max-width",
+            "!min-width"
+          ], // 能转化为vw的属性列表
           viewportUnit: 'vw', // 希望使用的视口单位
           fontViewportUnit: 'vw', // 字体使用的视口单位
           selectorBlackList: [], // 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位。

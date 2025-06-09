@@ -24,4 +24,16 @@ export default defineConfig({
       },
     }),
   ],
+  // loaded icons dynamically
+  safelist: [
+    'i-mdi:web',
+    'i-mdi:code-json',
+    'i-mdi:code-json-outline',
+    'i-mdi:code-json-plus',
+    'i-mdi:code-json-minus',
+    'i-mdi:code-json-remove',
+    'i-mdi:code-json-edit',
+    'i-mdi:code-json-variant',
+    'i-mdi:code-json-box',    
+  ]
 })

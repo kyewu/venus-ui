@@ -31,7 +31,7 @@ export default [
       return {
         code: 200,
         data: {
-          swipers: [
+          swiperLists: [
             {
               image: bg,
               title: '传播技术的种子',

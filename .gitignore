@@ -28,3 +28,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+/mock/downloads/** # Ignore downloads directory
+mock/downloads/* # Ignore all files in downloads directory
