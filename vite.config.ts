@@ -14,9 +14,10 @@ import Layouts from 'vite-plugin-vue-layouts-next'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import Markdown from 'unplugin-vue-markdown/vite'
 import prism from 'markdown-it-prism'
+import {viteMockServe} from 'vite-plugin-mock'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     VueRouter({
       dts: 'src/typed-router.d.ts',
@@ -62,7 +63,25 @@ export default defineConfig({
     }),
     VitePWA(),
     vueDevTools(),
+    viteMockServe({
+      mockPath: 'mock',
+      enable: true,
+      watchFiles: true,
+      logger: true,
+    }),
   ],
+  server: {
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:3000/', // 代理目标地址
+        changeOrigin: true, // 是否改变源
+        rewrite: (path) => path.replace(/^\/api/, ''), // 重写路径
+      },
+    }
+  },
+  define: {
+    __IS_DEVELOPMENT__: JSON.stringify(mode === 'development'),
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -91,4 +110,5 @@ export default defineConfig({
       ],
     },
   },
-})
+}))
+

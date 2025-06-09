@@ -103,7 +103,14 @@ import officialCourse4 from '@/assets/images/img4.jpg'
 import officialCourse5 from '@/assets/images/img5.jpg'
 
 import { useThemeStore } from '@/stores';
+import { useHomeStore } from '@/stores/useHomeStore';
 const store = useThemeStore()
+const homeStore = useHomeStore()
+
+onBeforeMount(async () => {
+  await homeStore.fetchData();
+})
+
 onMounted(() => {
   useRegisterSW({
     immediate: true,
