@@ -14,6 +14,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 
 const app = createApp(App)
+
 const head = createHead()
 
 app.use(createPinia())
