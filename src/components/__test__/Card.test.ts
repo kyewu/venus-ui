@@ -1,32 +1,53 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import Card from '../Card.vue'
 
+type imageTypeType = 'default' | 'rounded' | 'avatar'
+
+const imageTypeValue: imageTypeType = 'default'
+
+const propsValue = {
+  title: 'test',
+  subTitle: 'test subtitle',
+  titleClass: 'p-4',
+  height: 'h-60',
+  url: 'www.imooc.com',
+  imageType: imageTypeValue
+}
+let wrapperInstance: any
 describe('Card.vue', () => {
+  beforeEach(() => {
+    wrapperInstance = shallowMount(Card, {
+      props: propsValue
+    });
+  })
   it('computed函数是否存在', () => {
     expect(computed).toBeDefined();
   })
 
   it('test default title of the card', () => {
-    const wrapper = shallowMount(Card, {
-      props: {
-        title: 'test',
-        subTitle: 'test subtitle',
-        titleClass: 'p-4'
-      }
-    })
-    expect(wrapper.text()).toMatch('test')
-    expect(wrapper.text()).toMatch('test subtitle')
-    expect(wrapper.find('.title-wrapper').classes()).toContain('p-4')
+    expect(wrapperInstance.text()).toMatch('test')
+    expect(wrapperInstance.text()).toMatch('test subtitle')
+    expect(wrapperInstance.find('.title-wrapper').classes()).toContain('p-4')
   })
 
   it('test icon', () => {
-    const wrapper = shallowMount(Card, {
-      props: {
-        icon: 'i-mdi-account'
-      }
+    wrapperInstance.setProps({
+      icon: 'i-mdi-account'
     })
-    expect(wrapper.html().match(/i-mdi-account/))
+    expect(wrapperInstance.html().match(/i-mdi-account/))
+    console.log(wrapperInstance.html())
+  })
+
+  it('test slot', () => {
+    const propsTmpl = {...propsValue, icon: 'i-mdi-account'}
+    const wrapper = shallowMount(Card, {
+      props: propsTmpl,
+      slots: {
+        default: (item) => `<div>${JSON.stringify(item)}</div>`,
+      }
+    });
     console.log(wrapper.html())
+    expect(wrapper.html()).toMatch(propsTmpl.icon)
   })
 });
